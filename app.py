@@ -48,9 +48,6 @@ class Movie(db.Model):
         return f'<Title is : {self.title}>'
 
 
-db.create_all()
-
-
 @app.route("/")
 def home():
     movies = Movie.query.order_by(Movie.rating).all()
@@ -59,7 +56,7 @@ def home():
         film = Movie.query.filter_by(title=all_movies[i].title).first()
         film.ranking = i+1
         db.session.commit()
-    return render_template("index.html")
+    return render_template("index.html", movies=movies)
 
 
 @app.route('/edit', methods=['POST', 'GET'])
