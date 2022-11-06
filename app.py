@@ -52,13 +52,13 @@ db.create_all()
 
 @app.route("/")
 def home():
-    movies = Movie.query.order_by(Movie.rating).all()
-    all_movies = Movie.query.order_by(Movie.rating.desc()).all()
-    for i in range(len(all_movies)):
-        film = Movie.query.filter_by(title=all_movies[i].title).first()
-        film.ranking = i+1
-        db.session.commit()
-    return render_template("index.html", movies=movies)
+    # movies = Movie.query.order_by(Movie.rating).all()
+    # all_movies = Movie.query.order_by(Movie.rating.desc()).all()
+    # for i in range(len(all_movies)):
+    #     film = Movie.query.filter_by(title=all_movies[i].title).first()
+    #     film.ranking = i+1
+    #     db.session.commit()
+    return render_template("index.html")
 
 
 @app.route('/edit', methods=['POST', 'GET'])
